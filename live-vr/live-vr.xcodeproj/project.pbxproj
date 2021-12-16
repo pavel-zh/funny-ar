@@ -9,23 +9,39 @@
 /* Begin PBXBuildFile section */
 		E9BBF8BE276AB84F00F87BED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8BD276AB84F00F87BED /* AppDelegate.swift */; };
 		E9BBF8C0276AB84F00F87BED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8BF276AB84F00F87BED /* SceneDelegate.swift */; };
-		E9BBF8C2276AB84F00F87BED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8C1276AB84F00F87BED /* ViewController.swift */; };
+		E9BBF8C2276AB84F00F87BED /* LiveCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8C1276AB84F00F87BED /* LiveCameraViewController.swift */; };
 		E9BBF8C5276AB84F00F87BED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9BBF8C3276AB84F00F87BED /* Main.storyboard */; };
 		E9BBF8C7276AB85000F87BED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9BBF8C6276AB85000F87BED /* Assets.xcassets */; };
 		E9BBF8CA276AB85000F87BED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9BBF8C8276AB85000F87BED /* LaunchScreen.storyboard */; };
-		E9BBF8D2276AB88000F87BED /* VirtualContent in Resources */ = {isa = PBXBuildFile; fileRef = E9BBF8D1276AB88000F87BED /* VirtualContent */; };
+		E9BBF8DD276ABA0900F87BED /* Models.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = E9BBF8D4276ABA0900F87BED /* Models.scnassets */; };
+		E9BBF8DE276ABA0900F87BED /* Mask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8D5276ABA0900F87BED /* Mask.swift */; };
+		E9BBF8DF276ABA0900F87BED /* GlassesOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8D6276ABA0900F87BED /* GlassesOverlay.swift */; };
+		E9BBF8E0276ABA0900F87BED /* RobotHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8D7276ABA0900F87BED /* RobotHead.swift */; };
+		E9BBF8E1276ABA0900F87BED /* VirtualContentUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8D8276ABA0900F87BED /* VirtualContentUpdater.swift */; };
+		E9BBF8E2276ABA0900F87BED /* EarsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8D9276ABA0900F87BED /* EarsOverlay.swift */; };
+		E9BBF8E3276ABA0900F87BED /* VirtualContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8DA276ABA0900F87BED /* VirtualContentType.swift */; };
+		E9BBF8E4276ABA0900F87BED /* VirtualFaceContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8DB276ABA0900F87BED /* VirtualFaceContent.swift */; };
+		E9BBF8E5276ABA0900F87BED /* NoseOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8DC276ABA0900F87BED /* NoseOverlay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E9BBF8BA276AB84F00F87BED /* live-vr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "live-vr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9BBF8BD276AB84F00F87BED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9BBF8BF276AB84F00F87BED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E9BBF8C1276AB84F00F87BED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E9BBF8C1276AB84F00F87BED /* LiveCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCameraViewController.swift; sourceTree = "<group>"; };
 		E9BBF8C4276AB84F00F87BED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9BBF8C6276AB85000F87BED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9BBF8C9276AB85000F87BED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9BBF8CB276AB85000F87BED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E9BBF8D1276AB88000F87BED /* VirtualContent */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VirtualContent; sourceTree = "<group>"; };
+		E9BBF8D4276ABA0900F87BED /* Models.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Models.scnassets; sourceTree = "<group>"; };
+		E9BBF8D5276ABA0900F87BED /* Mask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mask.swift; sourceTree = "<group>"; };
+		E9BBF8D6276ABA0900F87BED /* GlassesOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlassesOverlay.swift; sourceTree = "<group>"; };
+		E9BBF8D7276ABA0900F87BED /* RobotHead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RobotHead.swift; sourceTree = "<group>"; };
+		E9BBF8D8276ABA0900F87BED /* VirtualContentUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualContentUpdater.swift; sourceTree = "<group>"; };
+		E9BBF8D9276ABA0900F87BED /* EarsOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarsOverlay.swift; sourceTree = "<group>"; };
+		E9BBF8DA276ABA0900F87BED /* VirtualContentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualContentType.swift; sourceTree = "<group>"; };
+		E9BBF8DB276ABA0900F87BED /* VirtualFaceContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualFaceContent.swift; sourceTree = "<group>"; };
+		E9BBF8DC276ABA0900F87BED /* NoseOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoseOverlay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +74,32 @@
 		E9BBF8BC276AB84F00F87BED /* live-vr */ = {
 			isa = PBXGroup;
 			children = (
-				E9BBF8D1276AB88000F87BED /* VirtualContent */,
+				E9BBF8D3276AB9D400F87BED /* Virtual Content */,
 				E9BBF8BD276AB84F00F87BED /* AppDelegate.swift */,
 				E9BBF8BF276AB84F00F87BED /* SceneDelegate.swift */,
-				E9BBF8C1276AB84F00F87BED /* ViewController.swift */,
+				E9BBF8C1276AB84F00F87BED /* LiveCameraViewController.swift */,
 				E9BBF8C3276AB84F00F87BED /* Main.storyboard */,
 				E9BBF8C6276AB85000F87BED /* Assets.xcassets */,
 				E9BBF8C8276AB85000F87BED /* LaunchScreen.storyboard */,
 				E9BBF8CB276AB85000F87BED /* Info.plist */,
 			);
 			path = "live-vr";
+			sourceTree = "<group>";
+		};
+		E9BBF8D3276AB9D400F87BED /* Virtual Content */ = {
+			isa = PBXGroup;
+			children = (
+				E9BBF8D9276ABA0900F87BED /* EarsOverlay.swift */,
+				E9BBF8D6276ABA0900F87BED /* GlassesOverlay.swift */,
+				E9BBF8D5276ABA0900F87BED /* Mask.swift */,
+				E9BBF8D4276ABA0900F87BED /* Models.scnassets */,
+				E9BBF8DC276ABA0900F87BED /* NoseOverlay.swift */,
+				E9BBF8D7276ABA0900F87BED /* RobotHead.swift */,
+				E9BBF8DA276ABA0900F87BED /* VirtualContentType.swift */,
+				E9BBF8D8276ABA0900F87BED /* VirtualContentUpdater.swift */,
+				E9BBF8DB276ABA0900F87BED /* VirtualFaceContent.swift */,
+			);
+			path = "Virtual Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,8 +160,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9BBF8D2276AB88000F87BED /* VirtualContent in Resources */,
 				E9BBF8CA276AB85000F87BED /* LaunchScreen.storyboard in Resources */,
+				E9BBF8DD276ABA0900F87BED /* Models.scnassets in Resources */,
 				E9BBF8C7276AB85000F87BED /* Assets.xcassets in Resources */,
 				E9BBF8C5276AB84F00F87BED /* Main.storyboard in Resources */,
 			);
@@ -142,7 +174,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9BBF8C2276AB84F00F87BED /* ViewController.swift in Sources */,
+				E9BBF8E0276ABA0900F87BED /* RobotHead.swift in Sources */,
+				E9BBF8E3276ABA0900F87BED /* VirtualContentType.swift in Sources */,
+				E9BBF8E2276ABA0900F87BED /* EarsOverlay.swift in Sources */,
+				E9BBF8E5276ABA0900F87BED /* NoseOverlay.swift in Sources */,
+				E9BBF8E1276ABA0900F87BED /* VirtualContentUpdater.swift in Sources */,
+				E9BBF8C2276AB84F00F87BED /* LiveCameraViewController.swift in Sources */,
+				E9BBF8DE276ABA0900F87BED /* Mask.swift in Sources */,
+				E9BBF8E4276ABA0900F87BED /* VirtualFaceContent.swift in Sources */,
+				E9BBF8DF276ABA0900F87BED /* GlassesOverlay.swift in Sources */,
 				E9BBF8BE276AB84F00F87BED /* AppDelegate.swift in Sources */,
 				E9BBF8C0276AB84F00F87BED /* SceneDelegate.swift in Sources */,
 			);

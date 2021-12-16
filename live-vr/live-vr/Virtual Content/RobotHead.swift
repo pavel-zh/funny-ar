@@ -27,7 +27,8 @@ class RobotHead: SCNReferenceNode, VirtualFaceContent {
     }()
     
     init(geometry: ARSCNFaceGeometry) {
-        guard let url = CareBundle.messagingUI.bundle.url(forResource: "suzanne", withExtension: "scn", subdirectory: "Models.scnassets")
+        
+        guard let url = Bundle.main.url(forResource: "suzanne", withExtension: "scn", subdirectory: "Models.scnassets")
             else { fatalError("missing expected bundle resource") }
         super.init(url: url)!
 //        self.geometry = geometry

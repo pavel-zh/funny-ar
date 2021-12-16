@@ -18,7 +18,7 @@ typealias VirtualFaceNode = VirtualFaceContent & SCNNode
 // MARK: - Loading Content
 
 func loadedContentForAsset(named resourceName: String) -> SCNNode {
-    let url = CareBundle.messagingUI.bundle.url(forResource: resourceName, withExtension: "scn", subdirectory: "Models.scnassets")!
+    let url = Bundle.main.url(forResource: resourceName, withExtension: "scn", subdirectory: "Models.scnassets")!
     let node = SCNReferenceNode(url: url)!
     node.load()
     
