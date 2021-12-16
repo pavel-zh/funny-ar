@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Live Camera View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="LiveCameraViewController" customModule="live_vr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACj-kO-hIy">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4s-9d-KNa">
+                                <rect key="frame" x="37" y="706" width="61" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="hyz-mv-gEq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                <state key="normal" title="nose">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="noseActionWithButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rZ3-X7-CCH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNl-iA-I5d">
+                                <rect key="frame" x="37" y="758" width="61" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ffA-pj-JDr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                <state key="normal" title="ears">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="earsActionWithButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ad8-7h-mmf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdM-LQ-IYQ">
+                                <rect key="frame" x="37" y="810" width="61" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="N4n-og-f8B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                <state key="normal" title="glasses">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="glassesActionWithButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ds8-Fm-YK5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJj-u0-6to" userLabel="camera switch Button">
+                                <rect key="frame" x="334" y="800" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Zkt-Di-5IX"/>
+                                    <constraint firstAttribute="height" constant="50" id="qOM-ev-oUF"/>
+                                </constraints>
+                                <state key="normal" image="reverse-camera"/>
+                                <connections>
+                                    <action selector="switchCameraActionWithSwitchCameraButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PE7-x0-9Zz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hBB-Fs-FfC"/>
+                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                        <constraints>
+                            <constraint firstItem="ACj-kO-hIy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0pi-jg-8vM"/>
+                            <constraint firstItem="hBB-Fs-FfC" firstAttribute="bottom" secondItem="CJj-u0-6to" secondAttribute="bottom" constant="12" id="15n-Hc-9Ao"/>
+                            <constraint firstItem="wdM-LQ-IYQ" firstAttribute="bottom" secondItem="CJj-u0-6to" secondAttribute="bottom" id="8s7-im-aGp"/>
+                            <constraint firstItem="FNl-iA-I5d" firstAttribute="centerX" secondItem="wdM-LQ-IYQ" secondAttribute="centerX" id="FAk-wq-LJl"/>
+                            <constraint firstItem="wdM-LQ-IYQ" firstAttribute="leading" secondItem="hBB-Fs-FfC" secondAttribute="leading" constant="37" id="II5-yc-NUb"/>
+                            <constraint firstAttribute="trailing" secondItem="ACj-kO-hIy" secondAttribute="trailing" id="IIl-xK-0ap"/>
+                            <constraint firstAttribute="bottom" secondItem="ACj-kO-hIy" secondAttribute="bottom" id="JkS-3j-v7e"/>
+                            <constraint firstItem="wdM-LQ-IYQ" firstAttribute="top" secondItem="FNl-iA-I5d" secondAttribute="bottom" constant="12" id="RA7-HM-7Ii"/>
+                            <constraint firstItem="ACj-kO-hIy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SH1-XZ-PDd"/>
+                            <constraint firstItem="hBB-Fs-FfC" firstAttribute="trailing" secondItem="CJj-u0-6to" secondAttribute="trailing" constant="30" id="Zoy-h7-vTH"/>
+                            <constraint firstItem="i4s-9d-KNa" firstAttribute="centerX" secondItem="wdM-LQ-IYQ" secondAttribute="centerX" id="aMK-WB-rYW"/>
+                            <constraint firstItem="FNl-iA-I5d" firstAttribute="width" secondItem="wdM-LQ-IYQ" secondAttribute="width" id="k9G-dm-MTJ"/>
+                            <constraint firstItem="i4s-9d-KNa" firstAttribute="width" secondItem="wdM-LQ-IYQ" secondAttribute="width" id="u1V-77-Uvf"/>
+                            <constraint firstItem="FNl-iA-I5d" firstAttribute="top" secondItem="i4s-9d-KNa" secondAttribute="bottom" constant="12" id="wUj-YX-DZN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mySceneView" destination="ACj-kO-hIy" id="Ngt-pH-M0Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.623188405797109" y="117.85714285714285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="reverse-camera" width="49" height="38.5"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

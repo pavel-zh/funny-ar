@@ -45,7 +45,7 @@ class VirtualContentUpdater: NSObject, ARSCNViewDelegate {
         
         // Remove all the current children.
         for child in node.childNodes {
-//            child.removeFromParentNode()
+            child.removeFromParentNode()
         }
         
         if let content = virtualFaceNode {

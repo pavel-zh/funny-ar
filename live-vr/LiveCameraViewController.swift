@@ -27,7 +27,7 @@ class LiveCameraViewController: UIViewController {
             contentUpdater.virtualFaceNode = nodeForContentType[selectedVirtualContent]
         }
     }
-
+    
     private let session = AVCaptureSession()
     private var stillImageOutput: AVCapturePhotoOutput?
     private var deviceInput: AVCaptureInput?
@@ -45,7 +45,6 @@ class LiveCameraViewController: UIViewController {
         let videoPreviewView = UIView()
         videoPreviewView.translatesAutoresizingMaskIntoConstraints = false
         view.insertSubview(videoPreviewView, at: 0)
-//        videoPreviewView.cr_fillContainerWithInsets(.zero)
         self.videoPreviewView = videoPreviewView
         DispatchQueue.global().async {
             self.setupCamera(onBack: false) { _, _ in
@@ -75,6 +74,55 @@ class LiveCameraViewController: UIViewController {
         arSession?.pause()
     }
 
+    @IBAction func switchCameraAction(switchCameraButton: UIButton) {
+        guard let videoPreviewView = videoPreviewView else {
+            return
+        }
+        
+        switchCameraButton.isSelected = !switchCameraButton.isSelected
+        
+        guard let cameraSnapshot = videoPreviewView.snapshotView(afterScreenUpdates: true) else {
+            return
+        }
+        
+        view.insertSubview(cameraSnapshot, aboveSubview: videoPreviewView)
+        setupCamera(onBack: switchCameraButton.isSelected) { _, _ in
+            self.videoPreviewLayer?.removeFromSuperlayer()
+            let videoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.session)
+            videoPreviewLayer.videoGravity = .resizeAspectFill
+            videoPreviewLayer.connection?.videoOrientation = .portrait
+            videoPreviewView.layer.addSublayer(videoPreviewLayer)
+            videoPreviewLayer.frame = videoPreviewView.bounds
+            self.videoPreviewLayer = videoPreviewLayer
+            self.session.startRunning()
+            UIView.transition(from: cameraSnapshot, to: videoPreviewView, duration: 0.4,
+                              options: !switchCameraButton.isSelected ? .transitionFlipFromLeft : .transitionFlipFromRight) { _ in
+                cameraSnapshot.removeFromSuperview()
+//                                self.cameraButtons.forEach { self.view.bringSubviewToFront($0) }
+            }
+        }
+    }
+
+    @IBAction func noseAction(button: UIButton) {
+        button.isSelected = !button.isSelected
+        selectedVirtualContent = button.isSelected ? .noseModel : .none
+    }
+    
+    @IBAction func earsAction(button: UIButton) {
+        button.isSelected = !button.isSelected
+        selectedVirtualContent = button.isSelected ? .earsModel : .none
+    }
+    
+    @IBAction func glassesAction(button: UIButton) {
+        button.isSelected = !button.isSelected
+        selectedVirtualContent = button.isSelected ? .glassesModel : .none
+    }
+
+    func refreshVirtualContent() {
+        // TODO:
+//        contentUpdater.virtualFaceNode = nodeForContentType[selectedVirtualContent]
+    }
+    
     func createFaceGeometry() {
         // This relies on the earlier check of `ARFaceTrackingConfiguration.isSupported`.
         guard let device = sceneView?.device else {
@@ -149,7 +197,6 @@ class LiveCameraViewController: UIViewController {
             }
         }
     }
-
 }
 
 extension LiveCameraViewController: ARSessionDelegate {
@@ -200,7 +247,6 @@ extension LiveCameraViewController: ARSessionDelegate {
     }
     
     // MARK: - Error handling
-    
     func displayErrorMessage(title: String, message: String) {
         // Present an alert informing about the error that has occurred.
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

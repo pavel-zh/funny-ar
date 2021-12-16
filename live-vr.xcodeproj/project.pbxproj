@@ -25,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E99E57EA276BEAE100C3B74F /* RevealServer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RevealServer.xcframework; path = "../../../../Library/Application Support/Reveal/RevealServer/RevealServer.xcframework"; sourceTree = "<group>"; };
 		E9BBF8BA276AB84F00F87BED /* live-vr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "live-vr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9BBF8BD276AB84F00F87BED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9BBF8BF276AB84F00F87BED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,11 +56,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E99E57E9276BEAE100C3B74F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E99E57EA276BEAE100C3B74F /* RevealServer.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E9BBF8B1276AB84F00F87BED = {
 			isa = PBXGroup;
 			children = (
 				E9BBF8BC276AB84F00F87BED /* live-vr */,
 				E9BBF8BB276AB84F00F87BED /* Products */,
+				E99E57E9276BEAE100C3B74F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
