@@ -189,10 +189,6 @@ class LiveCameraViewController: UIViewController {
             session.addOutput(stillImageOutput)
             
             DispatchQueue.main.async {
-//                self.cameraSwitchButton.isHidden = deviceDescoverySession.devices.count <= 1
-//                self.flashButton.isHidden = !camera.hasFlash
-//                self.shutterButton.isHidden = false
-
                 completion(camera, deviceDescoverySession)
             }
         }
