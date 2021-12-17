@@ -1,5 +1,5 @@
 //
-//  LiveCameraViewController.swift
+//  CameraViewController.swift
 //  live-vr
 //
 //  Created by Pavel Zhuravlev on 12/15/21.
@@ -10,8 +10,10 @@ import AVFoundation
 import ARKit
 import SceneKit
 
-class LiveCameraViewController: UIViewController {
+class CameraViewController: UIViewController {
 
+    @IBOutlet private var cameraButtons: [UIButton]!
+    
     @IBOutlet private var mySceneView: UIView!
     var sceneView: ARSCNView? {
         return mySceneView as? ARSCNView
@@ -45,6 +47,10 @@ class LiveCameraViewController: UIViewController {
         let videoPreviewView = UIView()
         videoPreviewView.translatesAutoresizingMaskIntoConstraints = false
         view.insertSubview(videoPreviewView, at: 0)
+        videoPreviewView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        videoPreviewView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        videoPreviewView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        videoPreviewView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         self.videoPreviewView = videoPreviewView
         DispatchQueue.global().async {
             self.setupCamera(onBack: false) { _, _ in
@@ -86,7 +92,7 @@ class LiveCameraViewController: UIViewController {
         }
         
         view.insertSubview(cameraSnapshot, aboveSubview: videoPreviewView)
-        setupCamera(onBack: switchCameraButton.isSelected) { _, _ in
+        setupCamera(onBack: !switchCameraButton.isSelected) { _, _ in
             self.videoPreviewLayer?.removeFromSuperlayer()
             let videoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.session)
             videoPreviewLayer.videoGravity = .resizeAspectFill
@@ -95,11 +101,15 @@ class LiveCameraViewController: UIViewController {
             videoPreviewLayer.frame = videoPreviewView.bounds
             self.videoPreviewLayer = videoPreviewLayer
             self.session.startRunning()
-            UIView.transition(from: cameraSnapshot, to: videoPreviewView, duration: 0.4,
-                              options: !switchCameraButton.isSelected ? .transitionFlipFromLeft : .transitionFlipFromRight) { _ in
-                cameraSnapshot.removeFromSuperview()
-//                                self.cameraButtons.forEach { self.view.bringSubviewToFront($0) }
-            }
+            UIView.transition(
+                from: cameraSnapshot,
+                to: videoPreviewView,
+                duration: 0.4,
+                options: !switchCameraButton.isSelected ? .transitionFlipFromLeft : .transitionFlipFromRight,
+                completion: { [weak self] _ in
+                    cameraSnapshot.removeFromSuperview()
+                    self?.cameraButtons.forEach { self?.view.bringSubviewToFront($0) }
+                })
         }
     }
 
@@ -118,37 +128,13 @@ class LiveCameraViewController: UIViewController {
         selectedVirtualContent = button.isSelected ? .glassesModel : .none
     }
 
-    func refreshVirtualContent() {
-        // TODO:
-//        contentUpdater.virtualFaceNode = nodeForContentType[selectedVirtualContent]
-    }
-    
-    func createFaceGeometry() {
-        // This relies on the earlier check of `ARFaceTrackingConfiguration.isSupported`.
-        guard let device = sceneView?.device else {
-            return
-        }
-        
-        let maskGeometry = ARSCNFaceGeometry(device: device)!
-        let glassesGeometry = ARSCNFaceGeometry(device: device)!
-        
-        nodeForContentType = [
-            .faceGeometry: Mask(geometry: maskGeometry),
-            .overlayModel: GlassesOverlay(geometry: glassesGeometry),
-            .blendShapeModel: RobotHead(geometry: maskGeometry),
-            .noseModel: NoseOverlay(geometry: glassesGeometry),
-            .earsModel: EarsOverlay(geometry: glassesGeometry),
-            .glassesModel: GlassesOverlay(geometry: glassesGeometry)
-        ]
-    }
-
     private func setupCamera(onBack backCameraSelected: Bool,
                              with completion: @escaping ((_ camera: AVCaptureDevice, _ cameraSettings: AVCaptureDevice.DiscoverySession) -> Void)) {
-        
         session.stopRunning()
-        let deviceDescoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera],
-                                                                      mediaType: .video,
-                                                                      position: .unspecified)
+        let deviceDescoverySession = AVCaptureDevice.DiscoverySession(
+            deviceTypes: [.builtInWideAngleCamera],
+            mediaType: .video,
+            position: .unspecified)
         
         session.sessionPreset = .high
         
@@ -193,9 +179,33 @@ class LiveCameraViewController: UIViewController {
             }
         }
     }
+    
+    func refreshVirtualContent() {
+        // TODO:
+//        contentUpdater.virtualFaceNode = nodeForContentType[selectedVirtualContent]
+    }
+    
+    func createFaceGeometry() {
+        // This relies on the earlier check of `ARFaceTrackingConfiguration.isSupported`.
+        guard let device = sceneView?.device else {
+            return
+        }
+        
+        let maskGeometry = ARSCNFaceGeometry(device: device)!
+        let glassesGeometry = ARSCNFaceGeometry(device: device)!
+        
+        nodeForContentType = [
+            .faceGeometry: Mask(geometry: maskGeometry),
+            .overlayModel: GlassesOverlay(geometry: glassesGeometry),
+            .blendShapeModel: RobotHead(geometry: maskGeometry),
+            .noseModel: NoseOverlay(geometry: glassesGeometry),
+            .earsModel: EarsOverlay(geometry: glassesGeometry),
+            .glassesModel: GlassesOverlay(geometry: glassesGeometry)
+        ]
+    }
 }
 
-extension LiveCameraViewController: ARSessionDelegate {
+extension CameraViewController: ARSessionDelegate {
     func session(_ session: ARSession, didFailWithError error: Error) {
         guard error is ARError else { return }
         

@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Live Camera View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LiveCameraViewController" customModule="live_vr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CameraViewController" customModule="live_vr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,6 +91,10 @@
                     </view>
                     <connections>
                         <outlet property="mySceneView" destination="ACj-kO-hIy" id="Ngt-pH-M0Y"/>
+                        <outletCollection property="cameraButtons" destination="CJj-u0-6to" collectionClass="NSMutableArray" id="96A-YX-owo"/>
+                        <outletCollection property="cameraButtons" destination="i4s-9d-KNa" collectionClass="NSMutableArray" id="t3r-la-Y9S"/>
+                        <outletCollection property="cameraButtons" destination="FNl-iA-I5d" collectionClass="NSMutableArray" id="MkL-gR-Wok"/>
+                        <outletCollection property="cameraButtons" destination="wdM-LQ-IYQ" collectionClass="NSMutableArray" id="w5U-eR-zYE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

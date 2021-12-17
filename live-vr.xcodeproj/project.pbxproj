@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E9BBF8BE276AB84F00F87BED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8BD276AB84F00F87BED /* AppDelegate.swift */; };
 		E9BBF8C0276AB84F00F87BED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8BF276AB84F00F87BED /* SceneDelegate.swift */; };
-		E9BBF8C2276AB84F00F87BED /* LiveCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8C1276AB84F00F87BED /* LiveCameraViewController.swift */; };
+		E9BBF8C2276AB84F00F87BED /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBF8C1276AB84F00F87BED /* CameraViewController.swift */; };
 		E9BBF8C5276AB84F00F87BED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9BBF8C3276AB84F00F87BED /* Main.storyboard */; };
 		E9BBF8C7276AB85000F87BED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9BBF8C6276AB85000F87BED /* Assets.xcassets */; };
 		E9BBF8CA276AB85000F87BED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9BBF8C8276AB85000F87BED /* LaunchScreen.storyboard */; };
@@ -29,7 +29,7 @@
 		E9BBF8BA276AB84F00F87BED /* live-vr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "live-vr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9BBF8BD276AB84F00F87BED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9BBF8BF276AB84F00F87BED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E9BBF8C1276AB84F00F87BED /* LiveCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCameraViewController.swift; sourceTree = "<group>"; };
+		E9BBF8C1276AB84F00F87BED /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		E9BBF8C4276AB84F00F87BED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9BBF8C6276AB85000F87BED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9BBF8C9276AB85000F87BED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 				E9BBF8D3276AB9D400F87BED /* Virtual Content */,
 				E9BBF8BD276AB84F00F87BED /* AppDelegate.swift */,
 				E9BBF8BF276AB84F00F87BED /* SceneDelegate.swift */,
-				E9BBF8C1276AB84F00F87BED /* LiveCameraViewController.swift */,
+				E9BBF8C1276AB84F00F87BED /* CameraViewController.swift */,
 				E9BBF8C3276AB84F00F87BED /* Main.storyboard */,
 				E9BBF8C6276AB85000F87BED /* Assets.xcassets */,
 				E9BBF8C8276AB85000F87BED /* LaunchScreen.storyboard */,
@@ -189,7 +189,7 @@
 				E9BBF8E2276ABA0900F87BED /* EarsOverlay.swift in Sources */,
 				E9BBF8E5276ABA0900F87BED /* NoseOverlay.swift in Sources */,
 				E9BBF8E1276ABA0900F87BED /* VirtualContentUpdater.swift in Sources */,
-				E9BBF8C2276AB84F00F87BED /* LiveCameraViewController.swift in Sources */,
+				E9BBF8C2276AB84F00F87BED /* CameraViewController.swift in Sources */,
 				E9BBF8DE276ABA0900F87BED /* Mask.swift in Sources */,
 				E9BBF8E4276ABA0900F87BED /* VirtualFaceContent.swift in Sources */,
 				E9BBF8DF276ABA0900F87BED /* GlassesOverlay.swift in Sources */,
