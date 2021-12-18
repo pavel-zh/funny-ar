@@ -29,7 +29,7 @@ class EarsOverlay: SCNNode, VirtualFaceContent {
 
         addChildNode(occlusionNode)
         
-        // Add 3D content positioned as "glasses".
+        // Add 3D content positioned as "ears".
         let faceOverlayContent = loadedContentForAsset(named: "earsModel")
         addChildNode(faceOverlayContent)
     }

@@ -102,12 +102,12 @@
 				E9BBF8D9276ABA0900F87BED /* EarsOverlay.swift */,
 				E9BBF8D6276ABA0900F87BED /* GlassesOverlay.swift */,
 				E9BBF8D5276ABA0900F87BED /* Mask.swift */,
-				E9BBF8D4276ABA0900F87BED /* Models.scnassets */,
 				E9BBF8DC276ABA0900F87BED /* NoseOverlay.swift */,
 				E9BBF8D7276ABA0900F87BED /* RobotHead.swift */,
 				E9BBF8DA276ABA0900F87BED /* VirtualContentType.swift */,
 				E9BBF8D8276ABA0900F87BED /* VirtualContentUpdater.swift */,
 				E9BBF8DB276ABA0900F87BED /* VirtualFaceContent.swift */,
+				E9BBF8D4276ABA0900F87BED /* Models.scnassets */,
 			);
 			path = "Virtual Content";
 			sourceTree = "<group>";

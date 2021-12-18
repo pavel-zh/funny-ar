@@ -29,7 +29,7 @@ class NoseOverlay: SCNNode, VirtualFaceContent {
 
         addChildNode(occlusionNode)
         
-        // Add 3D content positioned as "glasses".
+        // Add 3D content positioned as "nose".
         let faceOverlayContent = loadedContentForAsset(named: "noseModel")
         addChildNode(faceOverlayContent)
     }

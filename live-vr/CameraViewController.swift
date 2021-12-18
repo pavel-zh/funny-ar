@@ -12,14 +12,15 @@ import SceneKit
 
 class CameraViewController: UIViewController {
 
+    @IBOutlet private var cameraSwitchButton: UIButton!
     @IBOutlet private var cameraButtons: [UIButton]!
     
     @IBOutlet private var mySceneView: UIView!
     var sceneView: ARSCNView? {
-        return mySceneView as? ARSCNView
+        mySceneView as? ARSCNView
     }
     var arSession: ARSession? {
-        return sceneView?.session
+        sceneView?.session
     }
     var nodeForContentType = [VirtualContentType: VirtualFaceNode]()
     let contentUpdater = VirtualContentUpdater()
@@ -81,26 +82,27 @@ class CameraViewController: UIViewController {
     }
 
     @IBAction func switchCameraAction(switchCameraButton: UIButton) {
-        guard let videoPreviewView = videoPreviewView else {
+        guard let videoPreviewView = videoPreviewView,
+              let cameraSnapshot = videoPreviewView.snapshotView(afterScreenUpdates: true)
+        else {
             return
         }
         
         switchCameraButton.isSelected = !switchCameraButton.isSelected
-        
-        guard let cameraSnapshot = videoPreviewView.snapshotView(afterScreenUpdates: true) else {
-            return
-        }
-        
         view.insertSubview(cameraSnapshot, aboveSubview: videoPreviewView)
-        setupCamera(onBack: !switchCameraButton.isSelected) { _, _ in
-            self.videoPreviewLayer?.removeFromSuperlayer()
-            let videoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.session)
+        setupCamera(onBack: !switchCameraButton.isSelected) { [weak self] _, _ in
+            guard let strongSelf = self else {
+                return
+            }
+            strongSelf.videoPreviewLayer?.removeFromSuperlayer()
+            let videoPreviewLayer = AVCaptureVideoPreviewLayer(session: strongSelf.session)
             videoPreviewLayer.videoGravity = .resizeAspectFill
             videoPreviewLayer.connection?.videoOrientation = .portrait
             videoPreviewView.layer.addSublayer(videoPreviewLayer)
             videoPreviewLayer.frame = videoPreviewView.bounds
-            self.videoPreviewLayer = videoPreviewLayer
-            self.session.startRunning()
+            strongSelf.videoPreviewLayer = videoPreviewLayer
+            strongSelf.session.startRunning()
+            strongSelf.resetTracking()
             UIView.transition(
                 from: cameraSnapshot,
                 to: videoPreviewView,
@@ -187,20 +189,18 @@ class CameraViewController: UIViewController {
     
     func createFaceGeometry() {
         // This relies on the earlier check of `ARFaceTrackingConfiguration.isSupported`.
-        guard let device = sceneView?.device else {
+        guard let device = sceneView?.device,
+              let faceGeometry = ARSCNFaceGeometry(device: device)
+        else {
             return
         }
-        
-        let maskGeometry = ARSCNFaceGeometry(device: device)!
-        let glassesGeometry = ARSCNFaceGeometry(device: device)!
-        
         nodeForContentType = [
-            .faceGeometry: Mask(geometry: maskGeometry),
-            .overlayModel: GlassesOverlay(geometry: glassesGeometry),
-            .blendShapeModel: RobotHead(geometry: maskGeometry),
-            .noseModel: NoseOverlay(geometry: glassesGeometry),
-            .earsModel: EarsOverlay(geometry: glassesGeometry),
-            .glassesModel: GlassesOverlay(geometry: glassesGeometry)
+            .faceGeometry: Mask(geometry: faceGeometry),
+            .overlayModel: GlassesOverlay(geometry: faceGeometry),
+            .blendShapeModel: RobotHead(geometry: faceGeometry),
+            .noseModel: NoseOverlay(geometry: faceGeometry),
+            .earsModel: EarsOverlay(geometry: faceGeometry),
+            .glassesModel: GlassesOverlay(geometry: faceGeometry)
         ]
     }
 }
@@ -223,6 +223,9 @@ extension CameraViewController: ARSessionDelegate {
     }
     
     func sessionWasInterrupted(_ session: ARSession) {
+        DispatchQueue.main.async {
+            self.resetTracking()
+        }
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
@@ -231,32 +234,23 @@ extension CameraViewController: ARSessionDelegate {
         }
     }
     
-    /// - Tag: ARFaceTrackingSetup
     func resetTracking() {
         guard ARFaceTrackingConfiguration.isSupported else { return }
         let configuration = ARFaceTrackingConfiguration()
         configuration.isLightEstimationEnabled = true
         arSession?.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-    }
-    
-    // MARK: - Interface Actions
-    
-    /// - Tag: restartExperience
-    func restartExperience() {
-        // Disable Restart button for a while in order to give the session enough time to restart.
-//        statusViewController.isRestartExperienceButtonEnabled = false
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-//            self.statusViewController.isRestartExperienceButtonEnabled = true
-//        }
-        
-        resetTracking()
+        cameraButtons.filter {
+            $0 != cameraSwitchButton
+        }
+        .forEach {
+            $0.isSelected = false
+        }
     }
     
     // MARK: - Error handling
-    func displayErrorMessage(title: String, message: String) {
-        // Present an alert informing about the error that has occurred.
+    func displayErrorMessage(title: String, message: String?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let restartAction = UIAlertAction(title: "Restart Session", style: .default) { _ in
+        let restartAction = UIAlertAction(title: "Restart Session", style: .default) { [unowned self] _ in
             alertController.dismiss(animated: true, completion: nil)
             self.resetTracking()
         }
